@@ -13,4 +13,14 @@ class Booking extends Model
     protected $fillable = [
         'user_id', 'name', 'start_date', 'end_date', 'address', 'city', 'zip_code', 'car_id', 'price', 'vat', 'total_price', 'booking_status', 'payment_method', 'payment_status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Brand\StoreBrandRequest;
 use App\Models\Brand;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -28,15 +30,20 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.brand.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
-        //
+        $data = $request->safe()->all();
+        $data['slug'] = Str::slug($data['name']);
+
+        Brand::query()->create($data);
+
+        return redirect()->route('admin.brand.index');
     }
 
     /**

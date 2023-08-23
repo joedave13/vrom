@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Car\StoreCarRequest;
+use App\Models\Brand;
 use App\Models\Car;
+use App\Models\Type;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CarController extends Controller
 {
@@ -28,15 +32,23 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::all();
+        $types = Type::all();
+
+        return view('pages.admin.car.create', compact('brands', 'types'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCarRequest $request)
     {
-        //
+        $data = $request->safe()->all();
+        $data['slug'] = Str::slug($data['name']);
+
+        Car::query()->create($data);
+
+        return redirect()->route('admin.car.index');
     }
 
     /**

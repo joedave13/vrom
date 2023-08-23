@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware(['admin'])->name('admin.')->prefix('admin')->group(function () {
-        Route::resource('brand', BrandController::class);
+        Route::resource('brand', BrandController::class)->except('show');
     });
 });
 

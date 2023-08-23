@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Type\StoreTypeRequest;
 use App\Models\Type;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -28,15 +30,20 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.type.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
-        //
+        $data = $request->safe()->all();
+        $data['slug'] = Str::slug($data['name']);
+
+        Type::query()->create($data);
+
+        return redirect()->route('admin.type.index');
     }
 
     /**

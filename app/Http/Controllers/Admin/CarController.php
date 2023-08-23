@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Car\StoreCarRequest;
+use App\Http\Requests\Admin\Car\UpdateCarRequest;
 use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Type;
@@ -64,15 +65,23 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        $brands = Brand::all();
+        $types = Type::all();
+
+        return view('pages.admin.car.edit', compact('brands', 'types', 'car'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Car $car)
+    public function update(UpdateCarRequest $request, Car $car)
     {
-        //
+        $data = $request->safe()->all();
+        $data['slug'] = Str::slug($data['name']);
+
+        $car->update($data);
+
+        return redirect()->route('admin.car.index');
     }
 
     /**

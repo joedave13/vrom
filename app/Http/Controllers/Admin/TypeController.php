@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Type\StoreTypeRequest;
+use App\Http\Requests\Admin\Type\UpdateTypeRequest;
 use App\Models\Type;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -59,15 +60,20 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('pages.admin.type.edit', compact('type'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Type $type)
+    public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $data = $request->safe()->all();
+        $data['slug'] = Str::slug($data['name']);
+
+        $type->update($data);
+
+        return redirect()->route('admin.type.index');
     }
 
     /**

@@ -24,7 +24,7 @@
                     <x-nav-link :href="route('admin.type.index')" :active="request()->routeIs('admin.type*')">
                         {{ __('Type') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.car*')">
+                    <x-nav-link :href="route('admin.car.index')" :active="request()->routeIs('admin.car*')">
                         {{ __('Car') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.booking*')">
@@ -102,7 +102,7 @@
             <x-responsive-nav-link :href="route('admin.type.index')" :active="request()->routeIs('admin.type*')">
                 {{ __('Type') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.car*')">
+            <x-responsive-nav-link :href="route('admin.car.index')" :active="request()->routeIs('admin.car*')">
                 {{ __('Car') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.booking*')">

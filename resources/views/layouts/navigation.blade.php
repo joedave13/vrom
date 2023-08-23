@@ -21,7 +21,7 @@
                     <x-nav-link :href="route('admin.brand.index')" :active="request()->routeIs('admin.brand*')">
                         {{ __('Brand') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.type*')">
+                    <x-nav-link :href="route('admin.type.index')" :active="request()->routeIs('admin.type*')">
                         {{ __('Type') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.car*')">
@@ -99,7 +99,7 @@
             <x-responsive-nav-link :href="route('admin.brand.index')" :active="request()->routeIs('admin.brand*')">
                 {{ __('Brand') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.type*')">
+            <x-responsive-nav-link :href="route('admin.type.index')" :active="request()->routeIs('admin.type*')">
                 {{ __('Type') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.car*')">

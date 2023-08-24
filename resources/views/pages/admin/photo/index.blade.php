@@ -53,7 +53,7 @@
                                                     <img src="{{ Storage::url($photo->url) }}"
                                                         class="w-auto h-20 rounded-lg object-contain" alt="">
                                                 </th>
-                                                <td class="px-6 py-4 flex justify-end gap-x-1">
+                                                <td class="px-6 py-4 text-right">
                                                     <button type="button"
                                                         onclick="document.getElementById('delete-car-photo-form' + {{ $photo->id }}).submit();"
                                                         class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300">

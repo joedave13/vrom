@@ -11,7 +11,7 @@ class Booking extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'name', 'start_date', 'end_date', 'address', 'city', 'zip_code', 'car_id', 'price', 'vat', 'total_price', 'booking_status', 'payment_method', 'payment_status'
+        'user_id', 'name', 'start_date', 'end_date', 'address', 'city', 'zip_code', 'car_id', 'price', 'vat', 'total_price', 'booking_status', 'payment_method', 'payment_url', 'payment_status'
     ];
 
     public function user()

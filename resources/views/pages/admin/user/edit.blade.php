@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create New User') }}
+            {{ __('Edit User') }}
         </h2>
     </x-slot>
 
@@ -11,31 +11,32 @@
                 <div class="max-w-full">
                     <header>
                         <h2 class="text-lg font-medium text-gray-900">
-                            {{ __('Create New User') }}
+                            {{ __('Edit User') }}
                         </h2>
 
                         <p class="mt-1 text-sm text-gray-600">
-                            {{ __('Create new user for your car rent application.') }}
+                            {{ __('Edit user data in your car rent application.') }}
                         </p>
                     </header>
 
                     <section>
-                        <form action="{{ route('admin.user.store') }}" method="POST" class="space-y-6"
+                        <form action="{{ route('admin.user.update', $user) }}" method="POST" class="space-y-6"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
 
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div>
                                     <x-input-label for="name" :value="__('Name')" />
                                     <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
-                                        :value="old('name')" />
+                                        :value="old('name', $user->name)" />
                                     <x-input-error class="mt-2" :messages="$errors->get('name')" />
                                 </div>
 
                                 <div>
                                     <x-input-label for="email" :value="__('Email')" />
                                     <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"
-                                        :value="old('email')" />
+                                        :value="old('email', $user->email)" />
                                     <x-input-error class="mt-2" :messages="$errors->get('email')" />
                                 </div>
 
@@ -51,10 +52,12 @@
                                     <select id="role" name="role"
                                         class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full">
                                         <option value="" hidden>- Choose Role -</option>
-                                        <option value="ADMIN" {{ old('brand') == 'ADMIN' ? 'selected' : '' }}>
+                                        <option value="ADMIN"
+                                            {{ old('brand', $user->role) == 'ADMIN' ? 'selected' : '' }}>
                                             Admin
                                         </option>
-                                        <option value="USER" {{ old('brand') == 'USER' ? 'selected' : '' }}>
+                                        <option value="USER"
+                                            {{ old('brand', $user->role) == 'USER' ? 'selected' : '' }}>
                                             User
                                         </option>
                                     </select>
@@ -64,7 +67,7 @@
                                 <div>
                                     <x-input-label for="phone" :value="__('Phone Number')" />
                                     <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full"
-                                        :value="old('phone')" />
+                                        :value="old('phone', $user->phone)" />
                                     <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                                 </div>
 
@@ -78,16 +81,18 @@
                                     file:bg-indigo-50 file:text-indigo-700-700
                                     hover:file:bg-indigo-100
                                 " />
-                                    <div class="shrink-0 mt-3 hidden" id="avatar-preview-section">
+                                    <div class="shrink-0 mt-3 {{ $user->avatar ? '' : 'hidden' }}"
+                                        id="avatar-preview-section">
                                         <img id="avatar-preview" class="h-64 w-128 object-cover rounded-md"
-                                            src="" alt="Avatar Preview" />
+                                            src="{{ $user->avatar ? Storage::url($user->avatar) : '' }}"
+                                            alt="Avatar Preview" />
                                     </div>
                                     <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
                                 </div>
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                                <x-primary-button>{{ __('Update') }}</x-primary-button>
                             </div>
                         </form>
                     </section>

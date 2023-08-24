@@ -104,7 +104,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-left">
-                                                            {!! $user->role == 'User'
+                                                            {!! $user->role == 'USER'
                                                                 ? '<span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">User</span>'
                                                                 : '<span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Admin</span>' !!}
                                                         </td>

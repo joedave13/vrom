@@ -123,7 +123,7 @@
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                             {{ $car->created_at }}
                                                         </td>
-                                                        <td class="px-6 py-4 text-right">
+                                                        <td class="px-6 py-4 text-right flex gap-x-1">
                                                             <a href="{{ route('admin.car.show', $car) }}"
                                                                 class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"

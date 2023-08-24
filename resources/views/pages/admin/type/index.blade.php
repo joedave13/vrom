@@ -89,7 +89,7 @@
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                             {{ $type->created_at }}
                                                         </td>
-                                                        <td class="px-6 py-4 text-right">
+                                                        <td class="px-6 py-4 text-right flex gap-x-1">
                                                             <a href="{{ route('admin.type.edit', $type) }}"
                                                                 class="px-3 py-2 text-sm font-medium text-center inline-flex items-center bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"

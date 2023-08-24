@@ -80,73 +80,7 @@
 
     <div class="pb-12 grid gap-4 sm:grid-cols-2 sm:gap-6">
         {{-- Picture --}}
-        <div class="max-w-7xl sm:pl-10 lg:pl-36">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-full">
-                    <header>
-                        <h2 class="text-lg font-medium text-gray-900">
-                            {{ __('Car Picture') }}
-                        </h2>
-
-                        <p class="mt-1 text-sm text-gray-600">
-                            {{ __('Pictures of the car.') }}
-                        </p>
-                    </header>
-
-                    <section>
-                        <div
-                            class="flex flex-col md:flex-row items-center justify-end space-y-3 md:space-y-0 md:space-x-4 py-4">
-                            {{-- Create Car Picture Button --}}
-                            <div
-                                class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                <a href="{{ route('admin.car.create') }}"
-                                    class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none">
-                                    <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path clip-rule="evenodd" fill-rule="evenodd"
-                                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                                    </svg>
-                                    Add Picture
-                                </a>
-                            </div>
-                            {{-- End --}}
-                        </div>
-
-                        {{-- Car Picture Table --}}
-                        <div class="flex flex-col">
-                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                        <table class="min-w-full divide-y divide-gray-200">
-                                            <thead class="bg-gray-200">
-                                                <tr>
-                                                    <th scope="col"
-                                                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                        Picture
-                                                    </th>
-                                                    <th scope="col" class="relative px-6 py-3">
-                                                        <span class="sr-only">Action</span>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="bg-white divide-y divide-gray-200">
-                                                <tr>
-                                                    <td colspan="2"
-                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-500 text-center">
-                                                        No Data
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- End --}}
-                    </section>
-                </div>
-            </div>
-        </div>
+        @include('pages.admin.photo.index')
         {{-- End --}}
 
         {{-- Feature --}}

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('brand', BrandController::class)->except('show');
         Route::resource('type', TypeController::class)->except('show');
         Route::resource('car', CarController::class);
+        Route::resource('car.photo', PhotoController::class)->shallow();
     });
 });
 

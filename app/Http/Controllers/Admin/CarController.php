@@ -57,7 +57,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        $car->load(['brand', 'type']);
+        $car->load(['brand', 'type', 'photos', 'features']);
 
         return view('pages.admin.car.show', compact('car'));
     }

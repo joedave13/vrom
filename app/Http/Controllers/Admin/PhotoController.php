@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Photo\StorePhotoRequest;
 use App\Models\Car;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -69,6 +70,12 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        //
+        if ($photo->url && Storage::disk('public')->exists($photo->url)) {
+            Storage::disk('public')->delete($photo->url);
+        };
+
+        $photo->delete();
+
+        return redirect()->back();
     }
 }

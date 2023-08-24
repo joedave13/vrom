@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('brand', BrandController::class)->except('show');
         Route::resource('type', TypeController::class)->except('show');
         Route::resource('car', CarController::class);
-        Route::resource('car.photo', PhotoController::class)->shallow();
+        Route::resource('car.photo', PhotoController::class)->shallow()->only('create', 'store', 'destroy');
     });
 });
 

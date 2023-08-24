@@ -72,6 +72,8 @@ class FeatureController extends Controller
      */
     public function destroy(Feature $feature)
     {
-        //
+        $feature->delete();
+
+        return redirect()->back();
     }
 }

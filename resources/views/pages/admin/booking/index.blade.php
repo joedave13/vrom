@@ -129,7 +129,7 @@
                                                         <td class="px-6 py-4">
                                                             @include('pages.admin.booking.payment-status')
                                                         </td>
-                                                        <td class="px-6 py-4 text-right flex gap-x-1">
+                                                        <td class="px-6 py-4 flex justify-end gap-x-1">
                                                             <a href="{{ route('admin.booking.show', $booking) }}"
                                                                 class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"

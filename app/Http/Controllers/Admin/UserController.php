@@ -58,7 +58,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('pages.admin.user.show', compact('user'));
     }
 
     /**

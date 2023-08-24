@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -29,15 +31,24 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $data = $request->safe()->except('avatar');
+        $data['password'] = Hash::make($request->password);
+
+        if ($request->hasFile('avatar')) {
+            $data['avatar'] = $request->file('avatar')->store('user/avatar', 'public');
+        }
+
+        User::query()->create($data);
+
+        return redirect()->route('admin.user.index');
     }
 
     /**

@@ -66,10 +66,6 @@
                                                     </th>
                                                     <th scope="col"
                                                         class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                        Brand
-                                                    </th>
-                                                    <th scope="col"
-                                                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                                         Type
                                                     </th>
                                                     <th scope="col"
@@ -94,18 +90,35 @@
                                                     <tr>
                                                         <th scope="row"
                                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-left">
-                                                            {{ $car->name }}</th>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                            {{ $car->brand->name }}
-                                                        </td>
+                                                            <div>
+                                                                <div class="font-bold text-gray-900">
+                                                                    {{ $car->name }}
+                                                                </div>
+                                                                <div class="text-sm text-gray-500">
+                                                                    {{ $car->brand->name }}
+                                                                </div>
+                                                            </div>
+                                                        </th>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                             {{ $car->type->name }}
                                                         </td>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                             ${{ $car->price }}
                                                         </td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                            {{ $car->rating }}
+                                                        <td class="px-6 py-4 text-sm font-medium text-gray-500">
+                                                            <div class="flex items-center">
+                                                                @for ($i = 1; $i <= 5; $i++)
+                                                                    <svg aria-hidden="true" id="star{{ $i }}"
+                                                                        class="w-5 h-5 {{ $i <= $car->rating ? 'text-yellow-400' : 'text-gray-300' }}"
+                                                                        fill="currentColor" viewbox="0 0 20 20"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                                    </svg>
+                                                                @endfor
+                                                                <span
+                                                                    class="ml-1">{{ number_format($car->rating, 2, ',', '') }}</span>
+                                                            </div>
                                                         </td>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                             {{ $car->created_at }}
@@ -126,7 +139,8 @@
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
                                                                     stroke="currentColor" class="w-4 h-4 mr-2">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
                                                                         d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                                 </svg>
                                                                 Edit

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('car', CarController::class);
         Route::resource('car.photo', PhotoController::class)->shallow()->only('create', 'store', 'destroy');
         Route::resource('car.feature', FeatureController::class)->shallow()->except('index', 'show');
+        Route::resource('user', UserController::class);
     });
 });
 

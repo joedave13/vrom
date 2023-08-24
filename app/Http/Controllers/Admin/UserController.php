@@ -98,6 +98,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+            Storage::disk('public')->delete($user->avatar);
+        }
+
+        $user->delete();
+
+        return redirect()->route('admin.user.index');
     }
 }

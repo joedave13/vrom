@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Feature\StoreFeatureRequest;
+use App\Http\Requests\Admin\Feature\UpdateFeatureRequest;
 use App\Models\Car;
 use App\Models\Feature;
 use Illuminate\Http\Request;
@@ -51,15 +52,19 @@ class FeatureController extends Controller
      */
     public function edit(Feature $feature)
     {
-        //
+        return view('pages.admin.feature.edit', compact('feature'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Feature $feature)
+    public function update(UpdateFeatureRequest $request, Feature $feature)
     {
-        //
+        $data = $request->safe()->all();
+
+        $feature->update($data);
+
+        return redirect()->route('admin.car.show', $feature->car_id);
     }
 
     /**

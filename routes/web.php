@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('type', TypeController::class)->except('show');
         Route::resource('car', CarController::class);
         Route::resource('car.photo', PhotoController::class)->shallow()->only('create', 'store', 'destroy');
+        Route::resource('car.feature', FeatureController::class)->shallow()->only('create', 'store', 'destroy');
     });
 });
 

@@ -74,9 +74,9 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $data = $request->safe()->except('avatar');
+        $data = $request->safe()->except(['avatar', 'password']);
 
-        if ($request->has('password')) {
+        if ($request->password) {
             $data['password'] = Hash::make($request->password);
         }
 

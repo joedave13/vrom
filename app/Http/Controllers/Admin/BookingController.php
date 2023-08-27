@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Booking\UpdateBookingStatus;
 use App\Models\Booking;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -45,7 +46,9 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        $booking->load(['user', 'car']);
+
+        return view('pages.admin.booking.show', compact('booking'));
     }
 
     /**
@@ -59,9 +62,11 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Booking $booking)
+    public function update(UpdateBookingStatus $request, Booking $booking)
     {
-        //
+        $booking->update($request->validated());
+
+        return redirect()->back();
     }
 
     /**

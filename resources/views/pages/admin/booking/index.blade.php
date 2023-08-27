@@ -47,7 +47,7 @@
                                                 <tr>
                                                     <th scope="col"
                                                         class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                        Transaction Date
+                                                        Booking Date
                                                     </th>
                                                     <th scope="col"
                                                         class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
@@ -124,10 +124,10 @@
                                                             ${{ $booking->total_price }}
                                                         </td>
                                                         <td class="px-6 py-4">
-                                                            @include('pages.admin.booking.booking-status')
+                                                            @include('pages.admin.booking.partials.booking-status')
                                                         </td>
                                                         <td class="px-6 py-4">
-                                                            @include('pages.admin.booking.payment-status')
+                                                            @include('pages.admin.booking.partials.payment-status')
                                                         </td>
                                                         <td class="px-6 py-4 flex justify-end gap-x-1">
                                                             <a href="{{ route('admin.booking.show', $booking) }}"

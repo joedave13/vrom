@@ -67,7 +67,7 @@
                                                     </th>
                                                     <th scope="col"
                                                         class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                        Rent Status
+                                                        Booking Status
                                                     </th>
                                                     <th scope="col"
                                                         class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">

@@ -14,6 +14,11 @@ class Booking extends Model
         'code', 'user_id', 'name', 'start_date', 'end_date', 'address', 'city', 'zip_code', 'car_id', 'price', 'vat', 'total_price', 'booking_status', 'payment_method', 'payment_url', 'payment_status'
     ];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

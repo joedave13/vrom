@@ -116,8 +116,9 @@
                                                         </td>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                             <div class="flex flex-col">
-                                                                <span>{{ $booking->start_date }} -</span>
-                                                                <span>{{ $booking->end_date }}</span>
+                                                                <span>{{ $booking->start_date->toDateString() }}
+                                                                    -</span>
+                                                                <span>{{ $booking->end_date->toDateString() }}</span>
                                                             </div>
                                                         </td>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

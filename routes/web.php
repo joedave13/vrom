@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('car.photo', PhotoController::class)->shallow()->only('create', 'store', 'destroy');
         Route::resource('car.feature', FeatureController::class)->shallow()->except('index', 'show');
         Route::resource('user', UserController::class);
-        Route::resource('booking', BookingController::class)->except('create', 'store');
+        Route::resource('booking', BookingController::class)->except('create', 'store', 'edit', 'destroy');
     });
 });
 

@@ -72,7 +72,8 @@
                                     </div>
                                     <div class="text-gray-500">
                                         <span class="text-gray-800 font-medium mr-1">Rent Date :</span>
-                                        <span>{{ $booking->start_date }} - {{ $booking->end_date }}</span>
+                                        <span>{{ $booking->start_date->toDateString() }} -
+                                            {{ $booking->end_date->toDateString() }}</span>
                                     </div>
                                 </div>
                             </div>

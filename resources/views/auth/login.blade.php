@@ -1,47 +1,80 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.user.auth', ['title' => 'Sign In'])
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('content')
+    <div class="container">
+        <div class="flex flex-col items-center">
+            <header class="mb-[30px] text-center">
+                <h2 class="font-bold text-dark text-[26px] mb-1">
+                    Sign In & Drive
+                </h2>
+                <p class="text-base text-secondary">We will help you get ready today</p>
+            </header>
+            <!-- Form Card -->
+            <form id="login-form" action="{{ route('login') }}" method="POST"
+                class="bg-white p-[30px] pb-10 rounded-3xl max-w-[490px] w-full">
+                @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <div class="grid grid-cols-2 items-center gap-y-6 gap-x-4 lg:gap-x-[30px]">
+                    <!-- Email -->
+                    <div class="flex flex-col col-span-2 gap-3">
+                        <label for="email" class="text-base font-semibold text-dark">
+                            Email Address
+                        </label>
+                        <input type="email" name="email" id="email" value="{{ old('email') }}"
+                            class="text-base font-medium focus:border-primary focus:outline-none placeholder:text-secondary placeholder:font-normal px-[26px] py-4 border border-grey rounded-[50px]"
+                            placeholder="Email Address...">
+
+                        @if ($errors->has('email'))
+                            <ul class="text-sm" style="color: #dc2626;">
+                                @foreach ((array) $errors->get('email') as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+
+                    <!-- Password -->
+                    <div class="flex flex-col col-span-2 gap-3">
+                        <label for="password" class="text-base font-semibold text-dark">
+                            Password
+                        </label>
+                        <input type="password" name="password" id="password"
+                            class="text-base font-medium focus:border-primary focus:outline-none placeholder:text-secondary placeholder:font-normal px-[26px] py-4 border border-grey rounded-[50px]"
+                            placeholder="Password...">
+
+                        @if ($errors->has('password'))
+                            <ul class="text-sm" style="color: #dc2626;">
+                                @foreach ((array) $errors->get('password') as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        <a href="#" class="mt-1 text-base text-right underline text-secondary underline-offset-2">
+                            Forgot My Password
+                        </a>
+                    </div>
+                    <!-- Sign In Button -->
+                    <div class="col-span-2 mt-[26px]">
+                        <!-- Button Primary -->
+                        <div class="p-1 rounded-full bg-primary group">
+                            <a href="javascript:void(0);" onclick="document.getElementById('login-form').submit();"
+                                class="btn-primary">
+                                <p>
+                                    Sign In
+                                </p>
+                                <img src="{{ asset('user-assets/svg/ic-arrow-right.svg') }}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Create New Account Button -->
+                    <div class="col-span-2">
+                        <a href="{{ route('register') }}" class="btn-secondary">
+                            <p>Create New Account</p>
+                        </a>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection

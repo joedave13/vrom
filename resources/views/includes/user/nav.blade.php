@@ -44,7 +44,7 @@
                             </p>
                             <span class="p-1 rounded-full w-[55px] border-2 border-secondary">
                                 <img src="{{ auth()->user()->avatar ? Storage::url(auth()->user()->avatar) : 'https://static.thenounproject.com/png/5034901-200.png' }}"
-                                    class="w-full" alt="">
+                                    class="rounded-full w-[48px] h-[48px]" alt="">
                             </span>
                         </a>
 

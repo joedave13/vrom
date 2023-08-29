@@ -42,4 +42,9 @@ class BookingController extends Controller
 
         return view('pages.user.booking.show', compact('booking'));
     }
+
+    public function update(Request $request, Booking $booking)
+    {
+        //
+    }
 }

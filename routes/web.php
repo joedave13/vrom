@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/booking/{car:slug}/create', [UserBookingController::class, 'create'])->name('booking.create');
     Route::post('/booking/{car}', [UserBookingController::class, 'store'])->name('booking.store');
     Route::get('/booking/{booking}', [UserBookingController::class, 'show'])->name('booking.show');
+    Route::put('/booking/{booking}', [UserBookingController::class, 'update'])->name('booking.update');
 
     Route::middleware(['admin'])->name('admin.')->prefix('admin')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

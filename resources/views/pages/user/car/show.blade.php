@@ -81,7 +81,7 @@
                                     <div class="w-full max-w-[70%]">
                                         <!-- Button Primary -->
                                         <div class="p-1 rounded-full bg-primary group">
-                                            <a href="checkout.html" class="btn-primary">
+                                            <a href="{{ route('booking.create', $car) }}" class="btn-primary">
                                                 <p>
                                                     Rent Now
                                                 </p>

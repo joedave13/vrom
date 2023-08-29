@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\BookingController as UserBookingController;
 use App\Http\Controllers\User\CarController as UserCarController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/booking/{car:slug}/create', [UserBookingController::class, 'create'])->name('booking.create');
+    Route::post('/booking/{car}', [UserBookingController::class, 'store'])->name('booking.store');
+    Route::get('/booking/{booking}', [UserBookingController::class, 'show'])->name('booking.show');
 
     Route::middleware(['admin'])->name('admin.')->prefix('admin')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

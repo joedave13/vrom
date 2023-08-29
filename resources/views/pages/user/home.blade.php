@@ -98,7 +98,7 @@
                                 </h5>
                                 <p class="text-sm font-normal text-dark">{{ $car->brand->name }}</p>
                                 <p class="text-sm font-normal text-secondary">{{ $car->type->name }}</p>
-                                <a href="./details.html" class="absolute inset-0"></a>
+                                <a href="{{ route('car.show', $car->slug) }}" class="absolute inset-0"></a>
                             </div>
                             <img src="{{ $car->photos()->exists()? Storage::url($car->photos()->inRandomOrder()->first()->url): 'https://static.thenounproject.com/png/5034901-200.png' }}"
                                 class="rounded-[18px] min-w-[216px] w-full h-[150px]" alt="">

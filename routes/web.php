@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/car/{car:slug}', [UserCarController::class, 'show'])->name('car.show');
+Route::get('/booking/success', [UserBookingController::class, 'success'])->name('booking.success');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

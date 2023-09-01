@@ -87,4 +87,9 @@ class BookingController extends Controller
 
         return redirect('/');
     }
+
+    public function success()
+    {
+        return view('pages.user.booking.success');
+    }
 }

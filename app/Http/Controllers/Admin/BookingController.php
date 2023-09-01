@@ -20,6 +20,7 @@ class BookingController extends Controller
                 return $query->where('name', 'like', "%{$request->search}%")
                     ->orWhereRelation('car', 'name', 'like', "%{$request->search}%");
             })
+            ->latest()
             ->paginate(10);
 
         return view('pages.admin.booking.index', compact('bookings'));
